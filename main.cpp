@@ -94,7 +94,12 @@ int main(int argc, char* argv[])
         }
     }
     // Create API documentation file
-    ofstream doc_file("myapidoc.md");
+    filesystem::path out_file("myapidoc.md");
+    if (filesystem::exists(out_file)) {
+        cerr << "Warning: myapidoc.md already exists. Aborting." << endl;
+        return 1;
+    }
+    ofstream doc_file(out_file);
     doc_file << "# API Documentation\n\n";
     doc_file << "This document describes all available API endpoints.\n\n";
     doc_file << "## Endpoints\n\n";
