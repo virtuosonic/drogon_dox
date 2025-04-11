@@ -15,6 +15,6 @@ cmake --build .
 
 # Usage
 
-`drogon_dox <directory containing controllers>`
+`drogon_dox <directory containing controllers> [-o filename]`
 
 The output will be saved in myapidoc.md 

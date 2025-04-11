@@ -95,8 +95,15 @@ int main(int argc, char* argv[])
     }
     // Create API documentation file
     filesystem::path out_file("myapidoc.md");
+    // Check for -o option in command line arguments
+    for (int i = 1; i < argc - 1 ; i++) {
+        if (string(argv[i]) == "-o") {
+            out_file = argv[i + 1];
+            break;
+        }
+    }
     if (filesystem::exists(out_file)) {
-        cerr << "Warning: myapidoc.md already exists. Aborting." << endl;
+        cerr << "Warning: " << out_file << " already exists. Aborting." << endl;
         return 1;
     }
     ofstream doc_file(out_file);
